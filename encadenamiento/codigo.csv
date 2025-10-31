@@ -1,0 +1,47 @@
+TAD TablaHash
+    Estructura:
+        tabla: arreglo de listas
+        tamaño: entero
+        elementos: entero
+
+    Operaciones:
+        Crear(tamaño)
+            tabla ← arreglo de tamaño con listas vacías
+            elementos ← 0
+
+        Hash(clave)
+            retornar clave MOD tamaño  // o usar función hash(clave) MOD tamaño
+
+        Insertar(clave, valor)
+            índice ← Hash(clave)
+            para cada par en tabla[indice]
+                si par.clave = clave entonces
+                    par.valor ← valor  // actualizar
+                    retornar
+            agregar (clave, valor) a tabla[indice]
+            elementos ← elementos + 1
+
+        Buscar(clave)
+            índice ← Hash(clave)
+            para cada par en tabla[indice]
+                si par.clave = clave entonces
+                    retornar par.valor
+            retornar NULL
+
+        Eliminar(clave)
+            índice ← Hash(clave)
+            para cada par en tabla[indice]
+                si par.clave = clave entonces
+                    eliminar par de tabla[indice]
+                    elementos ← elementos - 1
+                    retornar VERDADERO
+            retornar FALSO
+
+        Contiene(clave)
+            retornar Buscar(clave) ≠ NULL
+
+        Tamaño()
+            retornar elementos
+
+        EstáVacía()
+            retornar elementos = 0

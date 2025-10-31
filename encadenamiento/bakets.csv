@@ -1,0 +1,20 @@
+# Crear una tabla hash con 10 buckets vacíos
+tabla_hash = [[] for _ in range(10)]
+
+# Función hash simple
+def hash_func(clave):
+    return hash(clave) % len(tabla_hash)
+
+# Insertar un par clave-valor
+def insertar(clave, valor):
+    indice = hash_func(clave)
+    tabla_hash[indice].append((clave, valor))
+    mostrar_baket(tabla_hash)
+    
+def mostrar_baket(tabla):
+    for fila,indice in enumerate(tabla):
+        print(f'Fila->{fila}|Valor->{indice}')
+
+# Ejemplo
+insertar("manzana", 5)
+insertar("banana", 3)
